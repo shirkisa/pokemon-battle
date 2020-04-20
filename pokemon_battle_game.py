@@ -1,8 +1,8 @@
 class Pokemon:
-    def __init__(self, name, _type):
+    def __init__(self, name, typ):
         self.name = name
         self.level = 1
-        self._type = _type
+        self.typ = typ
         self.max_health = self.level * 10
         self.current_health = self.max_health
         self.is_knocked_out = False
@@ -32,22 +32,22 @@ class Pokemon:
     # attack method - calculate damage based on type and level
     def attack(self, other_pokemon):
         # types = ["Water", "Fire", "Grass"]
-        if self._type == other_pokemon._type:
+        if self.typ == other_pokemon.typ:
             damage = self.level
-        elif self._type == "Water":
-            if other_pokemon._type == "Grass":
+        elif self.typ == "Water":
+            if other_pokemon.typ == "Grass":
                 damage = self.level * 0.5
-            elif other_pokemon._type == "Fire":
+            elif other_pokemon.typ == "Fire":
                 damage = self.level * 2
-        elif self._type == "Grass":
-            if other_pokemon._type == "water":
+        elif self.typ == "Grass":
+            if other_pokemon.typ == "water":
                 damage = self.level * 2
-            elif other_pokemon._type == "Fire":
+            elif other_pokemon.typ == "Fire":
                 damage = self.level * 0.5
-        elif self._type == "Fire":
-            if other_pokemon._type == "Grass":
+        elif self.typ == "Fire":
+            if other_pokemon.typ == "Grass":
                 damage = self.level * 2
-            elif other_pokemon._type == "water":
+            elif other_pokemon.typ == "water":
                 damage = self.level * 0.5
         return other_pokemon.lose_health(damage)
 
